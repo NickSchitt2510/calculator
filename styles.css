@@ -1,0 +1,21 @@
+/* default setting */
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+html {
+    /* Stretch the space to match the window */
+    height: 100%;
+}
+
+body {
+    /* Stretch the space to match the window */
+    height: 100%;
+}
+
+/* Outer layer reset */
+header, main, footer {
+    margin: 0;
+    padding: 0;
+}
