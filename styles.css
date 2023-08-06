@@ -21,6 +21,17 @@ header, main, footer {
     padding: 0;
 }
 
+.container {
+    width: 400px;
+    height: 550px;
+}
+
+#display {
+    height: 20px;
+    text-align: right;
+}
+
+
 #grid {
     width: 400px;
     height: 500px;
