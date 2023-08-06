@@ -2,6 +2,7 @@
 html, body {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
 }
 
 html {
@@ -18,4 +19,31 @@ body {
 header, main, footer {
     margin: 0;
     padding: 0;
+}
+
+#grid {
+    width: 400px;
+    height: 500px;
+    display: flex;
+    flex-direction: column;
+    border: 1px solid black;
+}
+
+.row {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+}
+
+.column {
+    flex: 1;
+    /* center text */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid black; */
+    height: 100%;
+    width: 100%;
 }
