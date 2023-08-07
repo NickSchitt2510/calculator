@@ -27,9 +27,9 @@ function operate(num1, num2, symbol) {
             return add(num1, num2);
         case '-':
             return subtract(num1, num2);
-        case '*':
+        case 'x':
             return multiply(num1, num2);
-        case '/':
+        case '÷':
             return divide(num1, num2);
     }
 }
@@ -54,7 +54,6 @@ function populateDisplay() {
 function initiateEquation() {
     equationCounter = 0;
     const display = document.querySelector('#resultDisplay');
-    const equation = document.querySelector('#equationDisplay');
 
     const operators = document.querySelectorAll('.operator');
     operators.forEach(operator => {
@@ -89,7 +88,6 @@ function initiateEquation() {
                 console.log(displayText);
 
                 // change textContent to display
-                equation.textContent = displayText;
                 numberVal = [];
                 equationCounter++;
             }
