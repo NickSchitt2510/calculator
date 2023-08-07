@@ -33,3 +33,23 @@ function operate(num1, num2, operator) {
             return divide(num1, num2);
     }
 }
+
+let displayVal = [];
+
+function populateDisplay() {
+    const display = document.querySelector('#display');
+
+    const numbers = document.querySelectorAll('.number');
+    console.log(numbers);
+    numbers.forEach(number => {
+        number.addEventListener('click', () => {
+        displayVal.push(number.getAttribute('value'));
+        display.textContent = displayVal.join('');
+    })});
+}
+
+function updateDisplayVal() {
+    
+}
+
+populateDisplay();
