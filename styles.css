@@ -48,7 +48,7 @@ header, main, footer {
     width: 100%;
 }
 
-.column {
+.button {
     flex: 1;
     /* center text */
     display: flex;

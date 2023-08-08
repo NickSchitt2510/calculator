@@ -52,6 +52,7 @@ function populateDisplay() {
 }
 
 function initiateEquation() {
+    displayText = '';
     equationCounter = 0;
     const display = document.querySelector('#resultDisplay');
 
@@ -61,19 +62,19 @@ function initiateEquation() {
             if (equationCounter === 0) {
                 // Store the array to num1
                 num1 = +numberVal.join('');
-                console.log(num1);
+                // console.log(num1);
                 // Store the operator to operator
                 symbol = operator.getAttribute('value');
-                console.log(symbol);
+                // console.log(symbol);
                 // change textContent to display
                 displayText += `${num1} ${symbol} `;
-                console.log(displayText);
+                // console.log(displayText);
                 display.textContent = displayText;
                 numberVal = [];
                 equationCounter++;
             } else {
                 num2 = +numberVal.join('');
-                console.log(num2);
+                // console.log(num2);
                 // Operate with old symbol and new num
                 num1 = operate(num1, num2, symbol);
                 display.textContent = num1;
@@ -81,7 +82,7 @@ function initiateEquation() {
                 
                 // Store the new symbol
                 symbol = operator.getAttribute('value');
-                console.log(symbol);
+                // console.log(symbol);
                 
                 // Display the new symbol in the equation
                 displayText += `${num2} ${symbol} `;
@@ -90,14 +91,38 @@ function initiateEquation() {
                 // change textContent to display
                 numberVal = [];
                 equationCounter++;
+
+                // Stop when = is clicked
             }
         });
     });
 }
 
-function continueEquation() {
+function clearFunction() {
+    const display = document.querySelector('#resultDisplay');
+    const clear = document.querySelector('#clear');
 
+    clear.addEventListener('click', () => {
+        // Reset
+        equationCounter = 0;
+        display.textContent = '0';
+        displayText = '';
+        numberVal = [];
+    });
 }
+
+function deleteFunction() {
+    const del = document.querySelector('#delete');
+
+    del.addEventListener('click', () => {
+        numberVal.pop();
+        display.textContent = numberVal.join('');
+        console.log(numberVal);
+    })
+}
+
 
 populateDisplay();
 initiateEquation();
+clearFunction();
+deleteFunction();
