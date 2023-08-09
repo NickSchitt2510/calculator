@@ -50,6 +50,7 @@ function populateDisplay() {
     numbers.forEach(number => {
         number.addEventListener('click', () => {
             numberVal.push(number.getAttribute('value'));
+            console.log(numberVal);
             display.textContent = numberVal.join('');
         });
     });
@@ -63,39 +64,25 @@ function initiateEquation() {
     const operators = document.querySelectorAll('.operator');
     operators.forEach(operator => {
         operator.addEventListener('click', () => {
-            if (equationCounter === 0) {
+            if (equationCounter === 0 && symbol !== '=') {
                 // Store the array to num1
                 num1 = +numberVal.join('');
-                // console.log(num1);
                 // Store the operator to operator
                 symbol = operator.getAttribute('value');
-                // console.log(symbol);
-                // change textContent to display
-                displayText += `${num1} ${symbol} `;
-                // console.log(displayText);
-                display.textContent = displayText;
+                display.textContent = num1;
                 numberVal = [];
                 equationCounter++;
-            } else {
+            } else if (equationCounter !== 0 && symbol !== '=') {
                 num2 = +numberVal.join('');
-                // console.log(num2);
                 // Operate with old symbol and new num
                 num1 = operate(num1, num2, symbol);
                 display.textContent = num1;
-                // Operate first then update the symbol
-                
-                // Store the new symbol
+                // Update the symbol
                 symbol = operator.getAttribute('value');
-                // console.log(symbol);
                 
-                // Display the new symbol in the equation
-                displayText += `${num2} ${symbol} `;
-                console.log(displayText);
-
                 // change textContent to display
                 numberVal = [];
                 equationCounter++;
-
                 // Stop when = is clicked
             }
         });
@@ -115,18 +102,20 @@ function clearFunction() {
     });
 }
 
-function deleteFunction() {
-    const del = document.querySelector('#delete');
+// function deleteFunction() {
+//     const del = document.querySelector('#delete');
 
-    del.addEventListener('click', () => {
-        numberVal.pop();
-        display.textContent = numberVal.join('');
-        console.log(numberVal);
-    })
-}
+//     del.addEventListener('click', () => {
+//         numberVal.pop();
+//         display.textContent = numberVal.join('');
+//         console.log(numberVal);
+//         populateDisplay();
+//         initiateEquation();
+//     })
+// }
 
 
 populateDisplay();
 initiateEquation();
 clearFunction();
-deleteFunction();
+// deleteFunction();
